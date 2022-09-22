@@ -3,9 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Doctor = require('../schemes/doctorScheme')
 const Patient = require('../schemes/patientScheme')
-// const User = require('../schemes/doctorScheme')
-// const doctorModel = require('../schemes/doctorScheme')
-// const patientModel = require('../schemes/patientScheme')
+
 const router = express.Router()
 
 router.post('/signup', async (req, res) => {
@@ -33,10 +31,10 @@ router.post('/signup', async (req, res) => {
 
     }
     else if (type === "patient") {
-        let patientExist = await Doctor.findOne({where:{email}})
+        let patientExist = await Patient.findOne({where:{email}})
         if(!patientExist){
            try{
-               let patient = await Doctor.create({name,email,password:hash})
+               let patient = await Patient.create({name,email,password:hash})
                return res.status(200).send({data:patient,response:"Account Created Succesfully"})
            }
            catch(error){

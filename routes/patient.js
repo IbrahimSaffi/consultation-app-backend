@@ -1,20 +1,23 @@
 const express = require('express')
+const Patient = require('../schemes/patientScheme')
 const router = express.Router()
 
 router.post('/update/:id', async (req,res)=>{
-    //  const {name,password,email,pastDiseases,bloodGroup,age,sex,weight} = req.body
-    //consultation update/update personal information
-    const {id} = req.body
-    if(req.body.id){
-        //For finding patient
+    let id =req.params.id
+    if(Object.keys(req.body).length===0){
+        return res.status(400).send({error:"No Onboarding information provided"})
     }
-    for (const key in req.body){
-        
-    }
-    
-    
+   const {pastDiseases,bloodGroup,age,sex,weight} = req.body
+   let patient = await Patient.findOne({where:{id}})
+    let updatedPatient = await patient.update({pastDiseases,bloodGroup,age,sex,weight})
+    return res.status(200).send({data:updatedPatient,response:"Succesfully updated"})
 })
 router.get("/:id",async (req,res)=>{
-   //Get patient history
+   let id = req.params.id
+   let patient = await Patient.findOne({where:{id}})
+   if(!patient){
+    return res.status(400).send({error:"No such patient"})
+   }
+   return res.status(200).send(patient)
 })
 module.exports = router

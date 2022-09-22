@@ -1,5 +1,4 @@
 //Getting packages
-// const postgres = require("./postgres-config")
 const express = require("express")
 const morgan = require("morgan")
 const cors = require('cors')
@@ -10,21 +9,12 @@ const jwt = require("jsonwebtoken")
 //Inititalizing express
 const app = express()
 
-
-// console.log(sequelize)
+//Routes importing
 const authRouter = require("./routes/auth")
 const doctorRouter = require("./routes/doctor")
 const patientRouter = require("./routes/patient")
-// async function checkConnection() {
-//     try {
-//         await sequelize.authenticate();
-//         console.log('Connection has been established successfully.');
-//     } catch (error) {
-//         console.error('Unable to connect to the database:', error);
-//     }
+const bookingRouter = require("./routes/booking")
 
-// }
-// checkConnection()
 //Middlewares
 app.use(cors({ origin: "*" }))
 app.use(morgan("dev"))
@@ -32,12 +22,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 
-//Routes
 //Routers usage
 app.use('/auth', authRouter)
 app.use(authenticate)
 app.use('/patient', patientRouter)
 app.use('/doctor', doctorRouter)
+app.use('/consultation',bookingRouter)
 
 
 

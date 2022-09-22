@@ -31,18 +31,21 @@ Patient.init({
       weight:{
           type:DataTypes.INTEGER
       },
-      // history:{
-      //    type:DataTypes.ARRAY(DataTypes.JSON)
-      // },
     },
     {
       sequelize, modelName: "Patient"
   }
     )
     async function createTable(){
+      try{
         await  Patient.sync({ alter: true })
+        console.log("Patient Table created Succesfully")
+      }
+      catch(err){
+        console.log(err)
+      }
       
       }
       createTable()
-//   // const patientModel = sequelize.models.patient
+      
   module.exports = Patient
