@@ -34,3 +34,6 @@ View Details for any doctor or patient
 Booking with available slot logic
 Fridays Night Goal
 Complete Design and Final Polishing
+24 September 2022
+4:00 PM to 7:10 PM Completed Logic of search page including all filters and layout
+8:30 PM to 10:10 PM Implemented Reset Password System on Backend

@@ -17,7 +17,6 @@ Doctor.init({
     },
     qualifications: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        defaultValue:[]
     },
     experience: {
         type: DataTypes.INTEGER,
@@ -38,8 +37,7 @@ Doctor.init({
         type: DataTypes.DECIMAL,
     },
     availableSlots: {
-        type: DataTypes.ARRAY(DataTypes.RANGE(DataTypes.DATE)),
-        defaultValue:[]
+        type: DataTypes.STRING,
     },
 
 },
