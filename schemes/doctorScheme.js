@@ -20,6 +20,7 @@ Doctor.init({
     },
     experience: {
         type: DataTypes.INTEGER,
+        defaultValue:1
     },
     hospital: {
         type: DataTypes.STRING,
@@ -32,6 +33,7 @@ Doctor.init({
     },
     cost: {
         type: DataTypes.INTEGER,
+        defaultValue:15,
     },
     ratings: {
         type: DataTypes.DECIMAL,
@@ -39,6 +41,10 @@ Doctor.init({
     availableSlots: {
         type: DataTypes.STRING,
     },
+    type:{
+        type:DataTypes.STRING,
+        defaultValue:"Doctor"
+    }
 
 },
     {

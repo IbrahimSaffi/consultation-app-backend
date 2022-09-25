@@ -35,7 +35,7 @@ router.post('/signup', async (req, res) => {
          }
 
     }
-    else if (type === "patient") {
+    else if (type.toLowerCase() === "patient") {
         let patientExist = await Patient.findOne({where:{email}})
         if(!patientExist){
            try{
@@ -53,23 +53,27 @@ router.post('/signup', async (req, res) => {
 
 })
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body
-    if (!email || !password) {
+    const { email, password,type } = req.body
+    if (!email || !password||!type) {
         return res.status(400).send({ error: "Some fields missing" })
     }
     let user ;
-    let doctorExist = await Doctor.findOne({where:{email}})
-    if(!doctorExist){
-        let patientExist = await Patient.findOne({where:{email}})
-        if(!patientExist){
-            console.log("here")
+     if(type.toLowerCase()==="doctor"){
+         let doctorExist = await Doctor.findOne({where:{email}})
+         if(!doctorExist){
+             return res.status(400).send({error:"No Such account Exists"})
+        }
+         user  = doctorExist
+
+     }
+     else{
+         let patientExist = await Patient.findOne({where:{email}})
+         if(!patientExist){
             return res.status(400).send({error:"No Such account Exists"})
         }
-        user = patientExist
-    }
-    else{
-        user  = doctorExist
-    }
+         user = patientExist
+
+     }
     const verifyUser = await bcrypt.compare(password, user.password)
     if (!verifyUser) {
         return res.status(400).send({ error: "Incorrect password" })

@@ -7,9 +7,9 @@ router.post('/update/:id', async (req,res)=>{
     if(Object.keys(req.body).length===0){
         return res.status(400).send({error:"No Onboarding information provided"})
     }
-   const {pastDiseases,bloodGroup,age,sex,weight} = req.body
+   const {pastDiseases,bloodgroup,age,gender,weight,country,city,contactnumber} = req.body
    let patient = await Patient.findOne({where:{id}})
-    let updatedPatient = await patient.update({pastDiseases,bloodGroup,age,sex,weight})
+    let updatedPatient = await patient.update({pastDiseases,bloodgroup,age,gender,weight,country,city,contactnumber})
     return res.status(200).send({data:updatedPatient,response:"Succesfully updated"})
 })
 router.get("/:id",async (req,res)=>{
