@@ -53,6 +53,7 @@ router.post("/review/:id",async (req,res)=>{
 
   router.get("/doctor/:id",async(req,res)=>{
     let id = req.params.id
+    console.log(id)
     let doctor = await Doctor.findOne({where:{id}})
     if(!doctor){
         res.status(400).send({error:"No such doctor"})
