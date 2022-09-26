@@ -110,11 +110,11 @@ router.post('/sendCode',async (req,res)=>{
     }
     let verificationCode =  Number(new Array(6).fill(0).map(num=>Math.floor(Math.random()*10)).join(""))
       verificationCodes[email] = verificationCode
-      setTimeout(()=>{
-        //Fix this verificationCodes is Object not Array
-       let index = verificationCodes.findIndex(code=>code.email===verificationCode)
-       verificationCodes.splice(index,1)
-      },5000*60)
+    //   setTimeout(()=>{
+    //     //Fix this verificationCodes is Object not Array
+    //    let index = verificationCodes.findIndex(code=>code.email===verificationCode)
+    //    verificationCodes.splice(index,1)
+    //   },5000*60)
       const mailgun = new Mailgun(formData);
       const client = mailgun.client({username: 'api', key: "c87b43971feac77e8614ab8409be7c1a-78651cec-f7874caf"});
       
