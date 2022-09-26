@@ -4,16 +4,16 @@ const morgan = require("morgan")
 const cors = require('cors')
 require('dotenv').config()
 const jwt = require("jsonwebtoken")
-//Getting routes
-
-//Inititalizing express
-const app = express()
 
 //Routes importing
 const authRouter = require("./routes/auth")
 const doctorRouter = require("./routes/doctor")
 const patientRouter = require("./routes/patient")
 const bookingRouter = require("./routes/booking")
+
+//Inititalizing express
+const app = express()
+
 
 //Middlewares
 app.use(cors({ origin: "*" }))
