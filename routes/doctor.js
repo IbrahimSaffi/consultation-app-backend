@@ -18,12 +18,8 @@ router.post("/update/:id",async (req,res)=>{
 })
 
 router.get("/",async (req,res)=>{
-  //Get doctors according to filter speciality
-  //Serch by speciality
   let doctors = await Doctor.findAll({raw:true})
     return res.status(200).send(doctors)
-    //Handle filtwering on frontend copy following logic
-    // let filteredList = doctors.filter(doctors=>req.body.qualifications.some(qualification=>doctors.qualifications.include(qualification)))
 })
 router.get("/:id",async (req,res)=>{
   let id = req.params.id
