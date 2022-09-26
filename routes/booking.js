@@ -1,5 +1,5 @@
 const express = require('express')
-const Booking = require('../schemes/BookingScheme')
+const Booking = require('../schemes/bookingScheme')
 const Doctor = require('../schemes/doctorScheme')
 const router = express.Router()
 
