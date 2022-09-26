@@ -3,7 +3,7 @@ const sequelize = require('../dbConfig')
 class Booking extends Model { }
 Booking.init({
     date: {
-        type: DataTypes.RANGE(DataTypes.DATE),
+        type: DataTypes.STRING(),
         // allowNull: false
     },
     doctor: {

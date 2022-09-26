@@ -125,11 +125,12 @@ router.post('/sendCode',async (req,res)=>{
         text: `Your verification code is ${verificationCode}`
       };
       client.messages.create("sandboxef1cbdf1a5b84ab9846a44d42f9bb719.mailgun.org", messageData)
-       .then((res) => {
+       .then((response) => {
         console.log(verificationCode)
-         return res.status(200).send(res)
+         return res.status(200).send(response)
        })
        .catch((err) => {
+        console.log(err)
         return res.status(400).send(err)
        });
       

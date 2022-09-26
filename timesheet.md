@@ -38,4 +38,13 @@ Complete Design and Final Polishing
 4:00 PM to 7:10 PM Completed Logic of search page including all filters and layout
 8:30 PM to 10:10 PM Implemented Reset Password System on Backend
 25 September 2022
-1:00 AM to 3:30 AM Added past diseases and available slots login on FE to prepare for slot booking
+1:00 PM to 3:30 PM Added past diseases and available slots login on FE to prepare for slot booking
+4:30 PM TO 6:00 PM/7:00 PM to 7:30 PM Added booking functionality(disabling already booked buttons remaining)
+10:15 PM to 10:40 PM Disabled Already booked buttons 
+10:40 PM to 11:40 Design of Login/Signup page
+12:10 PM to 1:20 PM Password Reset Logic on FE/Design 
+26 September 2022
+8:00 AM to 11:30 AM Consultation/Profile Pages/Prescription/Feedback
+12:00 PM to  Worked on remaining design
+  12:00PM to 1:00PM completed design of search page
+  1:00PM to 2:25 PM Completed Design of onboarding pages and profile pages
