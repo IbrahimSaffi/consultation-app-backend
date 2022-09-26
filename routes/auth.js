@@ -136,20 +136,19 @@ router.post('/sendCode',async (req,res)=>{
       
 })
 router.post('/reset-pass',async (req,res)=>{
-    const {email,code,newPassword,type} = req.body
-    if(!email,!code,!newPassword,!type){
+    const {email,code,newPassword} = req.body
+    if(!email,!code,!newPassword){
         res.status(400).send({err:"Fields missing"})
     }
     console.log(verificationCodes)
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(newPassword, salt)
     let user;
-    if(type.toLowerCase()==="doctor"){
         user = await Doctor.findOne({where:{email}})
-    }
-    else{
-        user = await Patient.findOne({where:{email}})
-    }
+      if(!user){
+          user = await Patient.findOne({where:{email}})
+      }
+    
     if(verificationCodes[email]===code){
         await user.update({password:hash})
         return res.status(200).send("Password Changes Sucssesfully")
